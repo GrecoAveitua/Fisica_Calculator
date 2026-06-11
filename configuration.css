@@ -1,0 +1,255 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/*
+    Created on : 24 jun. 2025, 14:30:43
+    Author     : Gigabyte
+*/
+
+:root {
+    --bg: #121212;
+    --surface: #1e1e1e;
+    --surface-2: #2a2a2a;
+    --text: #e8e8e8;
+    --text-muted: #9e9e9e;
+    --accent: rgb(102, 28, 61);
+    --accent-strong: rgb(132, 38, 81);
+    --accent-dark: rgb(82, 18, 41);
+    --border: #333;
+    --canvas-bg: #1a1a1a;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Times New Roman", Times, serif;
+    background-color: var(--bg);
+    color: var(--text);
+}
+.header{
+    background-color: var(--accent);
+    color: white;
+    padding: 20px 25px;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 55px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.header h1 {
+    margin: 0;
+    text-align: center;
+}
+.sidebar {
+    background-color: var(--surface);
+    position: fixed;
+    top: 90px;
+    left: 0;
+    width: 200px;
+    height: calc(100% - 90px);
+    padding: 20px 0;
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+.sidebar::-webkit-scrollbar-track {
+    background: var(--surface);
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 3px;
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-strong);
+}
+.content {
+    margin-left: 220px;
+    margin-top: 40px;
+    padding: 20px;
+    overflow-y: auto;
+}
+.menu-category {
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+.menu-category:hover {
+    background-color: var(--surface-2);
+    border-left: 4px solid var(--accent);
+}
+.menu-category.open {
+    background-color: var(--surface-2);
+    border-left: 4px solid var(--accent);
+}
+.submenu-category.open {
+    background-color: var(--surface-2);
+    border-left: 3px solid var(--accent);
+}
+.submenu {
+    padding-left: 20px;
+    display: none;
+}
+.menu-category .arrow, .submenu-category .arrow {
+    font-size: 12px;
+    margin-left: 5px;
+}
+.submenu-category {
+    padding: 8px 15px 8px 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 3px solid transparent;
+}
+.submenu-category:hover {
+    background-color: var(--surface-2);
+    border-left: 3px solid var(--text-muted);
+}
+.menu-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.menu-item:hover {
+    background-color: var(--surface-2);
+    border-left: 2px solid var(--text-muted);
+}
+.menu-item.active {
+    background-color: var(--accent);
+    color: white;
+    border-left: 2px solid var(--accent-strong);
+}
+h1, h2, h3 {
+    margin: 0;
+}
+.arrow {
+    transition: transform 0.3s;
+}
+.arrow.rotated {
+    transform: rotate(90deg);
+}
+.simulator-container {
+    max-width: 600px;
+    margin: 10px auto;
+    background: var(--surface);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+.simulator-container input,
+.simulator-container button {
+    margin: 8px 0;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+}
+#physicsCanvas {
+    background: var(--canvas-bg);
+    display: block;
+    margin: 20px auto;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+.param-control {
+    padding: 10px 15px 10px 40px;
+    background-color: var(--surface-2);
+    display: none;
+}
+.param-control label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+.param-control input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+.physics-result {
+    background-color: var(--surface-2);
+    border-left: 4px solid var(--accent);
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.formula, .note {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin: 6px 0;
+}
+input, button {
+  margin: 8px 0;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+}
+input {
+  background-color: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input::placeholder {
+  color: var(--text-muted);
+}
+button {
+  background-color: var(--accent);
+  color: white;
+  border: 1px solid var(--accent-strong);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-sizing: border-box;
+}
+button:hover {
+  background-color: var(--accent-strong);
+}
+button:active {
+  background-color: var(--accent-dark);
+}
+canvas {
+  background: var(--canvas-bg);
+  display: block;
+  margin: 20px auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+#resultados {
+  text-align: left;
+  margin-top: 20px;
+}
+@media (max-width: 768px) {
+     .sidebar {
+        width: 160px;
+      }
+  .content {
+        margin-left: 180px;
+  }
+}
+@media (max-width: 480px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+  }
+  .content {
+    margin-left: 0;
+  }
+}

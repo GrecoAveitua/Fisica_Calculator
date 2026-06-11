@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculadora de Física II</title>
+        <link rel="stylesheet" href="configuration.css"/>
+        <script src="physics-simulator.js" defer></script>
+    </head>
+    
+    <body>
+        <header class='header'>
+            <h1>Calculadora de Física II</h1>
+        </header>
+               
+        <nav class="sidebar">
+            
+            <div class="menu-item active" onclick="cargarContenido('Inicio', this)">Inicio</div>
+            
+            <div class="menu-category" onclick="toggleMenu(this)">
+                <span>Fricción</span>
+                <span class="arrow">▶</span>
+            </div>
+            
+            <div class="submenu">
+                
+                <div class="submenu-category" onclick="toggleMenu(this)">
+                    <span>Cinética</span>
+                    <span class="arrow">▶</span>
+                </div>
+                
+                <div class="submenu">
+                    <div class="submenu-category" onclick="toggleMenu(this)">
+                        <span>Plano Inclinado</span>
+                        <span class="arrow">▶</span>
+                    </div>
+                    
+                    <div class="submenu">
+                        <div class="menu-item" onclick="cargarContenido('FFPICIN', this)">Fuerza de Fricción</div>
+                        <div class="menu-item" onclick="cargarContenido('CoeficientePIFCin', this)">Coeficiente (μ)</div>
+                        <div class="menu-item" onclick="cargarContenido('MasaPIFCin', this)">Masa</div>
+                        <div class="menu-item" onclick="cargarContenido('ÁnguloPIFCin', this)">Ángulo de inclinación</div>
+                    </div>
+                    
+                    <div class="submenu-category" onclick="toggleMenu(this)">
+                        <span>Plano No Inclinado</span>
+                        <span class="arrow">▶</span>
+                    </div>
+                    
+                    <div class="submenu">
+                        <div class="menu-item" onclick="cargarContenido('FFPNICIN', this)">Fuerza de Fricción</div>
+                        <div class="menu-item" onclick="cargarContenido('CoefFriCinPNI', this)">Coeficiente (μ)</div>
+                        <div class="menu-item" onclick="cargarContenido('MasaCinPNI', this)">Masa</div>
+                    </div>
+
+                </div>
+                
+                <div class='submenu-category' onclick="toggleMenu(this)">
+                    <span>Estática</span>
+                    <span class='arrow'>▶</span>
+                </div>
+                
+                 <div class="submenu">
+                    <div class="submenu-category" onclick="toggleMenu(this)">
+                        <span>Plano Inclinado</span>
+                        <span class="arrow">▶</span>
+                    </div>
+                    
+                    <div class="submenu">
+                        <div class="menu-item" onclick="cargarContenido('FFPIEST', this)">Fuerza de Fricción</div>
+                        <div class="menu-item" onclick="cargarContenido('CoeficientePIF', this)">Coeficiente (μ)</div>
+                        <div class="menu-item" onclick="cargarContenido('MasaPIF', this)">Masa</div>
+                        <div class="menu-item" onclick="cargarContenido('ÁnguloPIF', this)">Ángulo de inclinación</div>
+                    </div>
+                    
+                    <div class="submenu-category" onclick="toggleMenu(this)">
+                        <span>Plano No Inclinado</span>
+                        <span class="arrow">▶</span>
+                    </div>
+                    
+                    <div class="submenu">
+                        <div class="menu-item" onclick="cargarContenido('FFPNIEST', this)">Fuerza de Fricción</div>
+                        <div class="menu-item" onclick="cargarContenido('CoefFricEstPNI', this)">Coeficiente (μ)</div>
+                        <div class="menu-item" onclick="cargarContenido('MasaEstPNI', this)">Masa</div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class='menu-category' onclick="toggleMenu(this)">
+                <span>MCU</span>
+                <span class='arrow'>▶</span>
+            </div>
+            
+            <div class="submenu">
+                <div class="menu-item" onclick="cargarContenido('SimulMCUNorm', this)">Simulador de MCU</div>
+                <div class="menu-item" onclick="cargarContenido('SimulMCURueda', this)">Cálculo del Periodo</div>
+                <div class="menu-item" onclick="cargarContenido('MCU_Frecuencia', this)">Cálculo de la Frecuencia</div>
+                <div class="menu-item" onclick="cargarContenido('MCU_VelocidadTangencial', this)">Cálculo de la Velocidad Tangencial</div>
+                <div class="menu-item" onclick="cargarContenido('MCU_Masa', this)">Cálculo de la Masa</div>
+                <div class="menu-item" onclick="cargarContenido('MCU_Radio', this)">Cálculo del Radio</div>
+            </div>
+            
+            <div class='menu-category' onclick="toggleMenu(this)">
+                <span>Trabajo y Energía</span>
+                <span class='arrow'>▶</span>
+            </div>
+            
+            <div class="submenu">
+                <div class="menu-item" onclick="cargarContenido('SimulWork', this)">Simulador de Trabajo</div>
+                <div class="menu-item" onclick="cargarContenido('SimulECin', this)">Simulador de Energía Cinética</div>
+                <div class="menu-item" onclick="cargarContenido('SimulEP', this)">Simulador de Energía Potencial</div>
+                <div class="menu-item" onclick="cargarContenido('SimulPot', this)">Simulador de Potencia</div>
+                <div class="menu-item" onclick="cargarContenido('SimulTrabajoNeto', this)">Simulador de Trabajo Neto</div>
+                <div class="menu-item" onclick="cargarContenido('SimulConstK', this)">Simulador de Constante Elástica</div>
+            </div>
+            
+            <div class='menu-category' onclick="toggleMenu(this)">
+                <span>Ímpetu</span>
+                <span class='arrow'>▶</span>
+            </div>
+            
+            <div class="submenu">
+                <div class="menu-item" onclick="cargarContenido('ImpCCM', this)">Ímpetu - Cálculo de la Cantidad de Movimiento</div>
+                <div class="menu-item" onclick="cargarContenido('ImpSLN', this)">Fuerza - Segunda Ley de Newton</div>
+                <div class="menu-item" onclick="cargarContenido('ImpEK', this)">Energía Cinética</div>
+                <div class="menu-item" onclick="cargarContenido('impTraET', this)">Trabajo - Cálculo de Energía Transferida</div>
+                <div class="menu-item" onclick="cargarContenido('ImpCM', this)">Ímpetu - Cálculo de la Masa</div>
+                <div class="menu-item" onclick="cargarContenido('ImpCV', this)">Ímpetu - Cálculo de la Velocidad</div>
+            </div>
+
+        </nav>
+                
+        <div class="content" id="contenido">
+            <h2>Bienvenido a la página</h2>
+            <p>Selecciona una opción del menú para ver su contenido.</p>
+        </div>
+        
+    </body>
+</html>
