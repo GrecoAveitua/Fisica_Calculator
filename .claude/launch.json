@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "fisica2",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8124"],
+      "port": 8124
+    },
+    {
+      "name": "cinematica",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8123", "--directory", "cinematica"],
+      "port": 8123
+    }
+  ]
+}

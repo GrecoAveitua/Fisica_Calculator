@@ -1,255 +1,251 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
-*/
-/*
-    Created on : 24 jun. 2025, 14:30:43
-    Author     : Gigabyte
-*/
+/* =========================================================================
+   Calculadora de Física II — UI moderna (glassmorphism + gradientes)
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-    --bg: #121212;
-    --surface: #1e1e1e;
-    --surface-2: #2a2a2a;
-    --text: #e8e8e8;
-    --text-muted: #9e9e9e;
-    --accent: rgb(102, 28, 61);
-    --accent-strong: rgb(132, 38, 81);
-    --accent-dark: rgb(82, 18, 41);
-    --border: #333;
-    --canvas-bg: #1a1a1a;
+    --bg-0: #0b0710;
+    --bg-1: #18101f;
+    --glass: rgba(255, 255, 255, 0.04);
+    --glass-strong: rgba(255, 255, 255, 0.07);
+    --stroke: rgba(255, 255, 255, 0.10);
+    --stroke-strong: rgba(255, 255, 255, 0.18);
+
+    --text: #f6eefb;
+    --text-muted: #b09bbf;
+
+    --c1: #f472b6;   /* pink   */
+    --c2: #c084fc;   /* purple */
+    --c3: #fb7185;   /* rose   */
+    --grad: linear-gradient(135deg, #fb7185 0%, #c084fc 55%, #818cf8 100%);
+    --grad-soft: linear-gradient(135deg, rgba(244,114,182,.18), rgba(129,140,248,.18));
+
+    --ok: #34d399;
+    --bad: #fb7185;
+
+    --r-lg: 22px;
+    --r-md: 14px;
+    --r-sm: 10px;
+    --shadow: 0 18px 50px -12px rgba(0, 0, 0, .65);
 }
 
-body{
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
     margin: 0;
-    padding: 0;
-    font-family: "Times New Roman", Times, serif;
-    background-color: var(--bg);
+    min-height: 100vh;
+    font-family: "Inter", system-ui, sans-serif;
     color: var(--text);
+    background:
+        radial-gradient(1100px 600px at 10% -10%, rgba(244, 114, 182, .16), transparent 60%),
+        radial-gradient(1000px 700px at 100% 0%, rgba(192, 132, 252, .16), transparent 55%),
+        radial-gradient(900px 600px at 50% 120%, rgba(129, 140, 248, .12), transparent 60%),
+        var(--bg-0);
+    -webkit-font-smoothing: antialiased;
 }
-.header{
-    background-color: var(--accent);
-    color: white;
-    padding: 20px 25px;
-    position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 55px;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center
+
+/* ----------------------------- Header ---------------------------------- */
+.app-header { padding: 30px 24px 16px; text-align: center; }
+
+.app-header .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 999px;
+    background: var(--grad-soft); border: 1px solid var(--stroke);
+    font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 14px;
 }
-.header h1 {
-    margin: 0;
-    text-align: center;
+.app-header .badge .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--c1); box-shadow: 0 0 10px var(--c1);
 }
-.sidebar {
-    background-color: var(--surface);
-    position: fixed;
-    top: 90px;
-    left: 0;
-    width: 200px;
-    height: calc(100% - 90px);
-    padding: 20px 0;
-    border-right: 1px solid var(--border);
-    overflow-y: auto;
-    scrollbar-width: thin;
+.app-header h1 {
+    margin: 0; font-family: "Sora", sans-serif; font-weight: 800;
+    font-size: clamp(28px, 5vw, 46px); line-height: 1.05; letter-spacing: -0.02em;
+    background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.sidebar::-webkit-scrollbar {
-    width: 6px;
+.app-header p {
+    margin: 10px auto 0; max-width: 560px; color: var(--text-muted); font-size: 15px;
 }
-.sidebar::-webkit-scrollbar-track {
-    background: var(--surface);
+
+/* ----------------------------- Tabs ------------------------------------ */
+.topbar {
+    position: sticky; top: 0; z-index: 100; height: 54px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 22px; background: rgba(0, 0, 0, .38); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--stroke);
 }
-.sidebar::-webkit-scrollbar-thumb {
-    background: var(--accent);
-    border-radius: 3px;
+.tb-brand {
+    font-family: "Sora", sans-serif; font-weight: 800; font-size: 18px; text-decoration: none;
+    letter-spacing: -.01em; display: flex; align-items: center; gap: 8px;
+    background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.sidebar::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-strong);
+.tb-brand span { -webkit-text-fill-color: initial; }
+.tb-links { display: flex; gap: 6px; }
+.tb-link {
+    padding: 7px 14px; border-radius: 999px; text-decoration: none;
+    color: var(--text-muted); font-weight: 600; font-size: 13px; border: 1px solid transparent;
+    transition: all .16s ease;
 }
-.content {
-    margin-left: 220px;
-    margin-top: 40px;
-    padding: 20px;
-    overflow-y: auto;
+.tb-link:hover { color: var(--text); background: var(--glass); border-color: var(--stroke); }
+.tb-link.active { color: #1a0f14; background: var(--grad); border-color: transparent; }
+
+.tabs {
+    position: sticky; top: 54px; z-index: 50;
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    padding: 14px 16px; margin: 6px auto 0; max-width: 1040px;
+    backdrop-filter: blur(14px);
 }
-.menu-category {
-    padding: 10px 15px;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-left: 4px solid transparent;
-    transition: all 0.3s ease-in-out;
+.tab {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 11px 18px; border-radius: 999px;
+    border: 1px solid var(--stroke); background: var(--glass);
+    color: var(--text-muted); font-weight: 600; font-size: 14px; cursor: pointer;
+    transition: transform .18s ease, color .18s ease, border-color .18s, background .18s;
 }
-.menu-category:hover {
-    background-color: var(--surface-2);
-    border-left: 4px solid var(--accent);
+.tab .ti { font-size: 16px; line-height: 1; }
+.tab:hover { color: var(--text); border-color: var(--stroke-strong); transform: translateY(-2px); }
+.tab.active {
+    color: #1a0f14; background: var(--grad); border-color: transparent;
+    box-shadow: 0 10px 26px -10px rgba(192, 132, 252, .8);
 }
-.menu-category.open {
-    background-color: var(--surface-2);
-    border-left: 4px solid var(--accent);
+
+/* ----------------------------- Chips ----------------------------------- */
+.chips {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    padding: 4px 16px 8px; max-width: 1040px; margin: 0 auto;
 }
-.submenu-category.open {
-    background-color: var(--surface-2);
-    border-left: 3px solid var(--accent);
+.chip {
+    padding: 8px 15px; border-radius: 999px; border: 1px solid var(--stroke);
+    background: transparent; color: var(--text-muted);
+    font-size: 13px; font-weight: 500; cursor: pointer; transition: all .16s ease;
 }
-.submenu {
-    padding-left: 20px;
-    display: none;
+.chip:hover { color: var(--text); border-color: var(--stroke-strong); }
+.chip.active {
+    color: var(--text); border-color: transparent; background: var(--grad-soft);
+    box-shadow: inset 0 0 0 1px var(--stroke-strong);
 }
-.menu-category .arrow, .submenu-category .arrow {
-    font-size: 12px;
-    margin-left: 5px;
+
+/* ----------------------------- Main / cards ---------------------------- */
+.content { max-width: 1040px; margin: 18px auto 60px; padding: 0 16px; }
+
+.card {
+    background: var(--glass); border: 1px solid var(--stroke);
+    border-radius: var(--r-lg); box-shadow: var(--shadow);
+    overflow: hidden; backdrop-filter: blur(16px);
+    animation: rise .45s cubic-bezier(.2, .7, .2, 1);
 }
-.submenu-category {
-    padding: 8px 15px 8px 25px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-left: 3px solid transparent;
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+.card-head {
+    padding: 22px 26px 18px; border-bottom: 1px solid var(--stroke); background: var(--grad-soft);
 }
-.submenu-category:hover {
-    background-color: var(--surface-2);
-    border-left: 3px solid var(--text-muted);
+.card-head h2 {
+    margin: 0; font-family: "Sora", sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.01em;
 }
-.menu-item {
-    padding: 12px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.card-head .formula {
+    margin: 10px 0 0; display: inline-block; padding: 6px 12px; border-radius: var(--r-sm);
+    background: rgba(0, 0, 0, .25); border: 1px solid var(--stroke);
+    font-family: "Sora", monospace; font-size: 13px; color: var(--c2);
 }
-.menu-item:hover {
-    background-color: var(--surface-2);
-    border-left: 2px solid var(--text-muted);
+
+.card-body { display: grid; grid-template-columns: 1fr 1.1fr; gap: 0; }
+.panel { padding: 24px 26px; }
+.panel.controls { border-right: 1px solid var(--stroke); }
+
+.field { margin-bottom: 16px; }
+.field label {
+    display: block; font-size: 12.5px; font-weight: 600; letter-spacing: .04em;
+    color: var(--text-muted); margin-bottom: 7px; text-transform: uppercase;
 }
-.menu-item.active {
-    background-color: var(--accent);
-    color: white;
-    border-left: 2px solid var(--accent-strong);
+.field input {
+    width: 100%; padding: 13px 15px; font-size: 16px; font-family: inherit; color: var(--text);
+    background: rgba(0, 0, 0, .28); border: 1px solid var(--stroke); border-radius: var(--r-md);
+    transition: border-color .16s, box-shadow .16s, background .16s;
 }
-h1, h2, h3 {
-    margin: 0;
+.field input::placeholder { color: rgba(176, 155, 191, .55); }
+.field input:focus {
+    outline: none; background: rgba(0, 0, 0, .4); border-color: var(--c2);
+    box-shadow: 0 0 0 4px rgba(192, 132, 252, .18);
 }
-.arrow {
-    transition: transform 0.3s;
+
+.btn {
+    width: 100%; margin-top: 6px; padding: 14px 18px;
+    font-size: 15px; font-weight: 700; font-family: "Sora", sans-serif; color: #1a0f14;
+    background: var(--grad); border: none; border-radius: var(--r-md); cursor: pointer;
+    transition: transform .15s ease, box-shadow .2s, filter .2s;
+    box-shadow: 0 12px 30px -12px rgba(192, 132, 252, .8);
 }
-.arrow.rotated {
-    transform: rotate(90deg);
+.btn:hover { transform: translateY(-2px); filter: brightness(1.06); }
+.btn:active { transform: translateY(0); }
+
+.panel.visual {
+    display: flex; flex-direction: column; gap: 14px;
+    background: radial-gradient(600px 300px at 80% -20%, rgba(244, 114, 182, .08), transparent 60%);
 }
-.simulator-container {
-    max-width: 600px;
-    margin: 10px auto;
-    background: var(--surface);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.6);
-}
-.simulator-container input,
-.simulator-container button {
-    margin: 8px 0;
-    padding: 10px;
-    width: 100%;
-    font-size: 16px;
-}
-#physicsCanvas {
-    background: var(--canvas-bg);
-    display: block;
-    margin: 20px auto;
-    border: 1px solid var(--border);
-    border-radius: 5px;
-}
-.param-control {
-    padding: 10px 15px 10px 40px;
-    background-color: var(--surface-2);
-    display: none;
-}
-.param-control label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: var(--text-muted);
-}
-.param-control input {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-}
-.physics-result {
-    background-color: var(--surface-2);
-    border-left: 4px solid var(--accent);
-    padding: 15px;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-.formula, .note {
-    color: var(--text-muted);
-    font-size: 14px;
-    margin: 6px 0;
-}
-input, button {
-  margin: 8px 0;
-  padding: 10px;
-  width: 100%;
-  font-size: 16px;
-}
-input {
-  background-color: var(--surface-2);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-input::placeholder {
-  color: var(--text-muted);
-}
-button {
-  background-color: var(--accent);
-  color: white;
-  border: 1px solid var(--accent-strong);
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  box-sizing: border-box;
-}
-button:hover {
-  background-color: var(--accent-strong);
-}
-button:active {
-  background-color: var(--accent-dark);
-}
+
+/* canvas: conserva la relación intrínseca (animaciones con coordenadas fijas) */
 canvas {
-  background: var(--canvas-bg);
-  display: block;
-  margin: 20px auto;
-  border: 1px solid var(--border);
-  border-radius: 8px;
+    width: 100%; height: auto; display: block;
+    background: linear-gradient(180deg, rgba(255,255,255,.02), transparent), var(--bg-1);
+    border: 1px solid var(--stroke); border-radius: var(--r-md);
 }
-#resultados {
-  text-align: left;
-  margin-top: 20px;
+
+.nota {
+    padding: 14px 16px; border-radius: var(--r-md);
+    background: rgba(0, 0, 0, .22); border: 1px dashed var(--stroke);
+    color: var(--text-muted); font-size: 13.5px; line-height: 1.5;
 }
-@media (max-width: 768px) {
-     .sidebar {
-        width: 160px;
-      }
-  .content {
-        margin-left: 180px;
-  }
+
+/* resultados (markup original: h3 + p / ul>li) */
+#physicsResults:empty { display: none; }
+#physicsResults {
+    background: rgba(0, 0, 0, .25); border: 1px solid var(--stroke);
+    border-left: 3px solid var(--c1); border-radius: var(--r-md); padding: 6px 18px 14px;
 }
-@media (max-width: 480px) {
-  .sidebar {
-    position: static;
-    width: 100%;
-  }
-  .content {
-    margin-left: 0;
-  }
+#physicsResults h3 {
+    margin: 14px 0 6px; font-family: "Sora", sans-serif; font-size: 13px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted);
+}
+#physicsResults ul { list-style: none; margin: 0; padding: 0; }
+#physicsResults p, #physicsResults li {
+    margin: 0; padding: 9px 0; font-size: 14px; line-height: 1.45;
+    border-bottom: 1px dashed var(--stroke);
+}
+#physicsResults p:last-child, #physicsResults li:last-child { border-bottom: none; }
+#physicsResults strong { color: #f9a8d4; font-weight: 600; }
+
+.error { color: var(--bad) !important; font-weight: 600; margin: 0; }
+
+/* ----------------------------- Home -------------------------------------*/
+.home-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-top: 4px;
+}
+.home-tile {
+    text-align: left; padding: 22px; border-radius: var(--r-md);
+    border: 1px solid var(--stroke); background: var(--glass); cursor: pointer;
+    transition: transform .18s, border-color .18s, background .18s;
+}
+.home-tile:hover { transform: translateY(-4px); border-color: var(--stroke-strong); background: var(--glass-strong); }
+.home-tile .ic {
+    width: 46px; height: 46px; display: grid; place-items: center; border-radius: 12px;
+    font-size: 22px; background: var(--grad-soft); border: 1px solid var(--stroke); margin-bottom: 14px;
+}
+.home-tile h3 { margin: 0 0 6px; font-family: "Sora", sans-serif; font-size: 17px; }
+.home-tile p { margin: 0; font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+.home-intro { margin: 0 0 22px; color: var(--text-muted); font-size: 15px; line-height: 1.6; }
+
+/* ----------------------------- Responsive -------------------------------*/
+@media (max-width: 760px) {
+    .card-body { grid-template-columns: 1fr; }
+    .panel.controls { border-right: none; border-bottom: 1px solid var(--stroke); }
+    .tabs { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; border-radius: 0; }
+    .tabs::-webkit-scrollbar { height: 0; }
+    .tab { flex: 0 0 auto; }
+    .app-header { padding-top: 22px; }
+}
+@media (max-width: 420px) {
+    .panel { padding: 18px; }
+    .tab { padding: 10px 14px; font-size: 13px; }
 }

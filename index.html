@@ -3,138 +3,124 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Calculadora de Física II</title>
-        <link rel="stylesheet" href="configuration.css"/>
-        <script src="physics-simulator.js" defer></script>
+        <title>FisiCalc — Suite de Física</title>
+        <link rel="stylesheet" href="inicio.css"/>
+        <script src="inicio.js" defer></script>
     </head>
-    
     <body>
-        <header class='header'>
-            <h1>Calculadora de Física II</h1>
-        </header>
-               
-        <nav class="sidebar">
-            
-            <div class="menu-item active" onclick="cargarContenido('Inicio', this)">Inicio</div>
-            
-            <div class="menu-category" onclick="toggleMenu(this)">
-                <span>Fricción</span>
-                <span class="arrow">▶</span>
-            </div>
-            
-            <div class="submenu">
-                
-                <div class="submenu-category" onclick="toggleMenu(this)">
-                    <span>Cinética</span>
-                    <span class="arrow">▶</span>
-                </div>
-                
-                <div class="submenu">
-                    <div class="submenu-category" onclick="toggleMenu(this)">
-                        <span>Plano Inclinado</span>
-                        <span class="arrow">▶</span>
-                    </div>
-                    
-                    <div class="submenu">
-                        <div class="menu-item" onclick="cargarContenido('FFPICIN', this)">Fuerza de Fricción</div>
-                        <div class="menu-item" onclick="cargarContenido('CoeficientePIFCin', this)">Coeficiente (μ)</div>
-                        <div class="menu-item" onclick="cargarContenido('MasaPIFCin', this)">Masa</div>
-                        <div class="menu-item" onclick="cargarContenido('ÁnguloPIFCin', this)">Ángulo de inclinación</div>
-                    </div>
-                    
-                    <div class="submenu-category" onclick="toggleMenu(this)">
-                        <span>Plano No Inclinado</span>
-                        <span class="arrow">▶</span>
-                    </div>
-                    
-                    <div class="submenu">
-                        <div class="menu-item" onclick="cargarContenido('FFPNICIN', this)">Fuerza de Fricción</div>
-                        <div class="menu-item" onclick="cargarContenido('CoefFriCinPNI', this)">Coeficiente (μ)</div>
-                        <div class="menu-item" onclick="cargarContenido('MasaCinPNI', this)">Masa</div>
-                    </div>
+        <div class="orbs"></div>
 
-                </div>
-                
-                <div class='submenu-category' onclick="toggleMenu(this)">
-                    <span>Estática</span>
-                    <span class='arrow'>▶</span>
-                </div>
-                
-                 <div class="submenu">
-                    <div class="submenu-category" onclick="toggleMenu(this)">
-                        <span>Plano Inclinado</span>
-                        <span class="arrow">▶</span>
-                    </div>
-                    
-                    <div class="submenu">
-                        <div class="menu-item" onclick="cargarContenido('FFPIEST', this)">Fuerza de Fricción</div>
-                        <div class="menu-item" onclick="cargarContenido('CoeficientePIF', this)">Coeficiente (μ)</div>
-                        <div class="menu-item" onclick="cargarContenido('MasaPIF', this)">Masa</div>
-                        <div class="menu-item" onclick="cargarContenido('ÁnguloPIF', this)">Ángulo de inclinación</div>
-                    </div>
-                    
-                    <div class="submenu-category" onclick="toggleMenu(this)">
-                        <span>Plano No Inclinado</span>
-                        <span class="arrow">▶</span>
-                    </div>
-                    
-                    <div class="submenu">
-                        <div class="menu-item" onclick="cargarContenido('FFPNIEST', this)">Fuerza de Fricción</div>
-                        <div class="menu-item" onclick="cargarContenido('CoefFricEstPNI', this)">Coeficiente (μ)</div>
-                        <div class="menu-item" onclick="cargarContenido('MasaEstPNI', this)">Masa</div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <div class='menu-category' onclick="toggleMenu(this)">
-                <span>MCU</span>
-                <span class='arrow'>▶</span>
-            </div>
-            
-            <div class="submenu">
-                <div class="menu-item" onclick="cargarContenido('SimulMCUNorm', this)">Simulador de MCU</div>
-                <div class="menu-item" onclick="cargarContenido('SimulMCURueda', this)">Cálculo del Periodo</div>
-                <div class="menu-item" onclick="cargarContenido('MCU_Frecuencia', this)">Cálculo de la Frecuencia</div>
-                <div class="menu-item" onclick="cargarContenido('MCU_VelocidadTangencial', this)">Cálculo de la Velocidad Tangencial</div>
-                <div class="menu-item" onclick="cargarContenido('MCU_Masa', this)">Cálculo de la Masa</div>
-                <div class="menu-item" onclick="cargarContenido('MCU_Radio', this)">Cálculo del Radio</div>
-            </div>
-            
-            <div class='menu-category' onclick="toggleMenu(this)">
-                <span>Trabajo y Energía</span>
-                <span class='arrow'>▶</span>
-            </div>
-            
-            <div class="submenu">
-                <div class="menu-item" onclick="cargarContenido('SimulWork', this)">Simulador de Trabajo</div>
-                <div class="menu-item" onclick="cargarContenido('SimulECin', this)">Simulador de Energía Cinética</div>
-                <div class="menu-item" onclick="cargarContenido('SimulEP', this)">Simulador de Energía Potencial</div>
-                <div class="menu-item" onclick="cargarContenido('SimulPot', this)">Simulador de Potencia</div>
-                <div class="menu-item" onclick="cargarContenido('SimulTrabajoNeto', this)">Simulador de Trabajo Neto</div>
-                <div class="menu-item" onclick="cargarContenido('SimulConstK', this)">Simulador de Constante Elástica</div>
-            </div>
-            
-            <div class='menu-category' onclick="toggleMenu(this)">
-                <span>Ímpetu</span>
-                <span class='arrow'>▶</span>
-            </div>
-            
-            <div class="submenu">
-                <div class="menu-item" onclick="cargarContenido('ImpCCM', this)">Ímpetu - Cálculo de la Cantidad de Movimiento</div>
-                <div class="menu-item" onclick="cargarContenido('ImpSLN', this)">Fuerza - Segunda Ley de Newton</div>
-                <div class="menu-item" onclick="cargarContenido('ImpEK', this)">Energía Cinética</div>
-                <div class="menu-item" onclick="cargarContenido('impTraET', this)">Trabajo - Cálculo de Energía Transferida</div>
-                <div class="menu-item" onclick="cargarContenido('ImpCM', this)">Ímpetu - Cálculo de la Masa</div>
-                <div class="menu-item" onclick="cargarContenido('ImpCV', this)">Ímpetu - Cálculo de la Velocidad</div>
+        <!-- ============================ LOGIN ============================ -->
+        <section class="view active" id="view-login">
+            <div class="hero">
+                <span class="badge"><span class="dot"></span> ⚛ FisiCalc · Suite de Física</span>
+                <h1>Bienvenido a <span class="grad">FisiCalc</span></h1>
+                <p>Tu laboratorio de física interactivo: calcula, visualiza y entiende
+                   el movimiento con animaciones en tiempo real.</p>
             </div>
 
-        </nav>
-                
-        <div class="content" id="contenido">
-            <h2>Bienvenido a la página</h2>
-            <p>Selecciona una opción del menú para ver su contenido.</p>
-        </div>
-        
+            <div class="card auth">
+                <h2>Inicia sesión para continuar</h2>
+
+                <button class="social google" onclick="loginSocial('Google')">
+                    <svg viewBox="0 0 48 48" width="20" height="20" aria-hidden="true">
+                        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                    </svg>
+                    Continuar con Google
+                </button>
+
+                <button class="social facebook" onclick="loginSocial('Facebook')">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="#fff">
+                        <path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/>
+                    </svg>
+                    Continuar con Facebook
+                </button>
+
+                <div class="divider"><span>o con tu cuenta</span></div>
+
+                <div class="seg">
+                    <button class="seg-btn active" data-m="correo" onclick="selMetodo('correo')">✉ Correo</button>
+                    <button class="seg-btn" data-m="telefono" onclick="selMetodo('telefono')">📱 Teléfono</button>
+                </div>
+
+                <input id="campoCorreo" type="email" placeholder="tucorreo@ejemplo.com" autocomplete="off">
+                <input id="campoTelefono" type="tel" placeholder="+52 55 1234 5678" style="display:none" autocomplete="off">
+
+                <p class="err" id="loginErr"></p>
+                <button class="btn primary" onclick="loginCampo()">Continuar →</button>
+
+                <p class="disclaimer">🔒 Demo: el inicio de sesión es solo visual; no se envía ni guarda ningún dato.</p>
+            </div>
+        </section>
+
+        <!-- ============================ PLANES =========================== -->
+        <section class="view" id="view-plans">
+            <div class="hero">
+                <span class="badge" id="saludo">¡Hola!</span>
+                <h1>Elige tu <span class="grad">plan</span></h1>
+                <p>Empieza gratis hoy mismo. El plan Premium está en camino. 🚀</p>
+            </div>
+
+            <div class="plans">
+                <div class="card plan">
+                    <div class="plan-top">
+                        <h3>Gratuito</h3>
+                        <div class="price">$0 <span>/ siempre</span></div>
+                    </div>
+                    <ul class="feat">
+                        <li>✓ Calculadora de Física II (34 cálculos)</li>
+                        <li>✓ Calculadora de Cinemática</li>
+                        <li>✓ Animaciones en tiempo real</li>
+                        <li>✓ Acceso a ambos módulos</li>
+                    </ul>
+                    <button class="btn primary" onclick="elegirPlan('free')">Comenzar gratis</button>
+                </div>
+
+                <div class="card plan premium">
+                    <span class="ribbon">Próximamente</span>
+                    <div class="plan-top">
+                        <h3>Premium</h3>
+                        <div class="price">—</div>
+                    </div>
+                    <ul class="feat muted">
+                        <li>🔒 Más temas: ondas, electricidad, termodinámica</li>
+                        <li>🔒 Exportar resultados a PDF</li>
+                        <li>🔒 Resolución paso a paso</li>
+                        <li>🔒 Sin anuncios</li>
+                    </ul>
+                    <button class="btn ghost" onclick="premiumInfo()">🚧 En construcción</button>
+                    <p class="building" id="buildMsg">🛠️ Estamos trabajando en ello. ¡Vuelve pronto!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================ LANZADOR ========================= -->
+        <section class="view" id="view-launch">
+            <div class="hero">
+                <h1>¿A dónde quieres <span class="grad">ir</span>?</h1>
+                <p>Elige el módulo con el que quieres empezar. Podrás cambiar entre
+                   ellos desde la barra superior en cualquier momento.</p>
+            </div>
+
+            <div class="apps">
+                <a class="card appcard" href="fisica2.html">
+                    <div class="ic ic-a">🧲</div>
+                    <h3>Física II</h3>
+                    <p>Fricción, MCU, trabajo y energía, ímpetu.</p>
+                    <span class="go">Entrar →</span>
+                </a>
+                <a class="card appcard" href="cinematica/index.html">
+                    <div class="ic ic-b">🚀</div>
+                    <h3>Cinemática</h3>
+                    <p>MRU, MRUV, caída libre, tiro parabólico.</p>
+                    <span class="go">Entrar →</span>
+                </a>
+            </div>
+
+            <button class="btn ghost back" onclick="mostrarVista('plans')">← Volver a planes</button>
+        </section>
     </body>
 </html>
