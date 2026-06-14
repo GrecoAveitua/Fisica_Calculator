@@ -1,0 +1,12 @@
+{
+  "name": "fisicalc",
+  "version": "0.1.0",
+  "private": true,
+  "description": "FisiCalc — suite de física interactiva (monorepo)",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "echo \"Aun no hay apps. Pronto levantaremos web y api desde aqui.\""
+  }
+}
