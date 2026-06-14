@@ -7,6 +7,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "echo \"Aun no hay apps. Pronto levantaremos web y api desde aqui.\""
+    "dev:web": "pnpm --filter @fisicalc/web dev",
+    "build:web": "pnpm --filter @fisicalc/web build"
   }
 }
