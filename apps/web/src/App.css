@@ -97,7 +97,8 @@
   color: var(--text-h);
 }
 
-.field input {
+.field input,
+.field select {
   font: inherit;
   padding: 12px 14px;
   border: 1px solid var(--border);
@@ -108,7 +109,8 @@
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
-.field input:focus {
+.field input:focus,
+.field select:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-bg);
 }

@@ -3,6 +3,7 @@ import "./App.css";
 import { FrictionCalculator } from "./components/FrictionCalculator";
 import { MomentumCalculator } from "./components/MomentumCalculator";
 import { MCUCalculator } from "./components/MCUCalculator";
+import { EnergyCalculator } from "./components/EnergyCalculator";
 
 // La lista de calculadoras disponibles. Agregar una nueva en el futuro
 // sera tan facil como sumar una entrada aqui y su componente abajo.
@@ -10,6 +11,7 @@ const TABS = [
   { id: "friccion", label: "Fricción" },
   { id: "impetu", label: "Ímpetu" },
   { id: "mcu", label: "MCU" },
+  { id: "energia", label: "Energía" },
 ] as const;
 
 function App() {
@@ -40,6 +42,7 @@ function App() {
         {active === "friccion" && <FrictionCalculator />}
         {active === "impetu" && <MomentumCalculator />}
         {active === "mcu" && <MCUCalculator />}
+        {active === "energia" && <EnergyCalculator />}
       </main>
     </div>
   );
