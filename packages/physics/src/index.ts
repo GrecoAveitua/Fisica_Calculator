@@ -10,3 +10,5 @@ export * from "./math";
 export * from "./friction";
 export * from "./impetus";
 export * from "./mcu";
+export * from "./energy";
+export * from "./dynamics";
