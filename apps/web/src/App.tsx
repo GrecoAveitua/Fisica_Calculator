@@ -2,12 +2,14 @@ import { useState } from "react";
 import "./App.css";
 import { FrictionCalculator } from "./components/FrictionCalculator";
 import { MomentumCalculator } from "./components/MomentumCalculator";
+import { MCUCalculator } from "./components/MCUCalculator";
 
 // La lista de calculadoras disponibles. Agregar una nueva en el futuro
 // sera tan facil como sumar una entrada aqui y su componente abajo.
 const TABS = [
   { id: "friccion", label: "Fricción" },
   { id: "impetu", label: "Ímpetu" },
+  { id: "mcu", label: "MCU" },
 ] as const;
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
       <main>
         {active === "friccion" && <FrictionCalculator />}
         {active === "impetu" && <MomentumCalculator />}
+        {active === "mcu" && <MCUCalculator />}
       </main>
     </div>
   );
