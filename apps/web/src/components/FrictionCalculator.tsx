@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { frictionForce, GRAVITY } from "@fisicalc/physics";
+import { NumberField } from "./NumberField";
 
 /**
  * Calculadora de fuerza de friccion:  F = mu * m * g
@@ -30,27 +31,13 @@ export function FrictionCalculator() {
       <h2 className="card-title">Fuerza de friccion</h2>
       <p className="formula">F = μ · m · g</p>
 
-      <label className="field">
-        <span>Masa (kg)</span>
-        <input
-          type="number"
-          inputMode="decimal"
-          value={mass}
-          onChange={(e) => setMass(e.target.value)}
-          placeholder="ej. 2"
-        />
-      </label>
-
-      <label className="field">
-        <span>Coeficiente de friccion (μ)</span>
-        <input
-          type="number"
-          inputMode="decimal"
-          value={coefficient}
-          onChange={(e) => setCoefficient(e.target.value)}
-          placeholder="ej. 0.3"
-        />
-      </label>
+      <NumberField label="Masa (kg)" value={mass} onChange={setMass} placeholder="ej. 2" />
+      <NumberField
+        label="Coeficiente de friccion (μ)"
+        value={coefficient}
+        onChange={setCoefficient}
+        placeholder="ej. 0.3"
+      />
 
       {result !== null ? (
         <p className="result">
